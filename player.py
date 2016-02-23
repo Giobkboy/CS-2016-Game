@@ -7,6 +7,7 @@ class Entity_Type(Enum):
 	PLAYER = 1
 	#THING = NUM
 
+
 ##################################################################
 #this class is the object for an "attack" when a player is		 #
 # "hit" it is passed an attack object with a name and a certan   #
@@ -43,8 +44,7 @@ class Attack:
 ##################################################################
 class Entity:
 	
-	
-	#constructor
+	# constructor
 	# name -- name of the player
 	# coins -- the amount of currancey (init 0)
 	# hp -- the amount of hit points to a Entity (init 100)
@@ -56,25 +56,6 @@ class Entity:
 		
 		self.isAlive = True
 		self.attacks = {}
-		
-		
-	# pass an attack object to have an attack against a player
-	# the amount of hp is 
-	def takeAttack(self, attack_obj):
-		
-		if attack_obj is Attack: #makes sure that attack object is being passed being 
-			self.hitPoints = self.hitPoints - attack_obj.get_hp()
-			if self.hitPoints < 0:
-				self.isAlive = False
-		else: 
-			return -1
-			
-			
-	def attack(self, e, attack_name):
-	
-		if e is Entity:
-			if len(self.attacks) > 0:
-				e.takeAttack(attacks[attack_name])
 	
 	#getter for name
 	def get_name(self):
@@ -96,12 +77,39 @@ class Entity:
 	#this instance of Entity
 	def has_attacks(self):
 		return len(self.attacks) > 0 
-		
+	
+	#adds an attack to the docket
 	def add_attack(self, attack_obj):
 		if not(attack_obj is Attack):
 			return -1
 		self.attacks[attack_obj.get_name()] = attack_obj			
-			
+		
+	#kills the entity
+	def death(self, mess):
+		self.isAlive = False
+		print mess
 				
+				
+		
+	# pass an attack object to have an attack against a player
+	# the amount of hp is 
+	def takeAttack(self, attack_obj):
+		
+		if attack_obj is Attack: #makes sure that attack object is being passed being 
+			self.hitPoints = self.hitPoints - attack_obj.get_hp()
+			if self.hitPoints < 0:
+				self.death(attack_obj.get_message())
+				
+		else: 
+			return -1
+			
+			
+	def attack(self, e, attack_name):
+	
+		if e is Entity:
+			if len(self.attacks) > 0:
+				e.takeAttack(attacks[attack_name])
+		else
+			return -1
 			 			
 							
