@@ -75,8 +75,32 @@ class Entity:
 		if e is Entity:
 			if len(self.attacks) > 0:
 				e.takeAttack(attacks[attack_name])
-				
-				
+	
+	#getter for name
+	def get_name(self):
+		return self.name
+		
+	#getter for coins
+	def get_bal(self):
+		return self.coins
+	
+	#getter for hit points
+	def get_hp(self):
+		return self.hitPoints
+	
+	#getter for is alive
+	def is_alive(self):
+		return self.isAlive
+	
+	#checks to see if there are any attacks in the 
+	#this instance of Entity
+	def has_attacks(self):
+		return len(self.attacks) > 0 
+		
+	def add_attack(self, attack_obj):
+		if not(attack_obj is Attack):
+			return -1
+		self.attacks[attack_obj.get_name()] = attack_obj			
 			
 				
 			 			
