@@ -109,7 +109,7 @@ class Entity:
 		if e is Entity:
 			if len(self.attacks) > 0:
 				e.takeAttack(attacks[attack_name])
-		else
+		else:
 			return -1
 			 			
 							
