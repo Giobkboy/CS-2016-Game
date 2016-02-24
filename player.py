@@ -80,14 +80,14 @@ class Entity:
 	
 	#adds an attack to the docket
 	def add_attack(self, attack_obj):
-		if not(attack_obj is Attack):
+		if not(type(attack_obj) is Attack):
 			return -1
 		self.attacks[attack_obj.get_name()] = attack_obj			
 		
 	#kills the entity
 	def death(self, mess):
 		self.isAlive = False
-		print mess
+		print(mess)
 				
 				
 		
@@ -95,7 +95,7 @@ class Entity:
 	# the amount of hp is 
 	def takeAttack(self, attack_obj):
 		
-		if attack_obj is Attack: #makes sure that attack object is being passed being 
+		if type(attack_obj) is Attack: #makes sure that attack object is being passed being 
 			self.hitPoints = self.hitPoints - attack_obj.get_hp()
 			if self.hitPoints < 0:
 				self.death(attack_obj.get_message())
@@ -106,10 +106,10 @@ class Entity:
 			
 	def attack(self, e, attack_name):
 	
-		if e is Entity:
+		if type(e) is Entity:
 			if len(self.attacks) > 0:
-				e.takeAttack(attacks[attack_name])
+				e.takeAttack(self.attacks[attack_name])
 		else:
 			return -1
 			 			
-							
+						
