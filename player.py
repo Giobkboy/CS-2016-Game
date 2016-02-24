@@ -48,14 +48,15 @@ class Entity:
 	# name -- name of the player
 	# coins -- the amount of currancey (init 0)
 	# hp -- the amount of hit points to a Entity (init 100)
-	def __init__(self, name, coins = 0, hp = 100):
-	
-		self.name = name
-		self.coins = coins #starts with no coins by default
-		self.hitPoints = hp #you start with a HP coins
-		
-		self.isAlive = True
-		self.attacks = {}
+	def __init__(self, name, E_type = Entity_Type.DEFALT ,coins = 0, hp = 100):
+
+	    self.name = name
+	    self.e_type = E_type
+	    self.coins = coins #starts with no coins by default
+	    self.hitPoints = hp #you start with a HP coins
+	    
+	    self.isAlive = True
+	    self.attacks = {}
 	
 	#getter for name
 	def get_name(self):
@@ -93,7 +94,7 @@ class Entity:
 		
 	# pass an attack object to have an attack against a player
 	# the amount of hp is 
-	def takeAttack(self, attack_obj):
+	def take_attack(self, attack_obj):
 		
 		if type(attack_obj) is Attack: #makes sure that attack object is being passed being 
 			self.hitPoints = self.hitPoints - attack_obj.get_hp()
@@ -112,4 +113,4 @@ class Entity:
 		else:
 			return -1
 			 			
-						
+				
