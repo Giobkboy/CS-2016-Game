@@ -1,4 +1,4 @@
-import palyer
+import player
 
 class Room:
   
