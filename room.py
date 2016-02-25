@@ -2,7 +2,7 @@ import player
 
 class Room:
   
-  def __init__(self, name, key_wrd, mobs = [], childern):
+  def __init__(self, name, key_wrd, childern, mobs = []):
     
       self.name = name
       self.key_word = key_wrd
@@ -10,6 +10,7 @@ class Room:
       if(self.check_mobs(mobs)):
         raise TypeError("use type Entity for mobs")
         quit(-1)
+        
       self.mops = mobs
       self.childern = childern
     
@@ -32,4 +33,6 @@ class Room:
       return ms_list[key]
     else:
       return -1
-        
+  
+  def get_discription(self):
+    return self.key_word
